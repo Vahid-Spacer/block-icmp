@@ -33,20 +33,17 @@ case $OPTION in
         sudo iptables -A INPUT -p icmp -j DROP
 
         # Save iptables rules
-        echo -e "${GREEN}Saving iptables rules...${RESET}"
+echo "Saving iptables rules..."
         sudo mkdir -p /etc/iptables/
         sudo iptables-save | sudo tee /etc/iptables/rules.v4
-        echo -e "${GREEN}---------------------------------------------------------${RESET}"
-        echo -e "${GREEN}                                                 ${RESET}"
-        echo -e "${GREEN}               Ping is closed                      $PORTS ${RESET}"
-        echo -e "${GREEN}                                                 ${RESET}"
-        echo -e "${GREEN}---------------------------------------------------------${RESET}"
-        read -p "Back to Main menu? (${GREEN}y${RESET}/${RED}n${RESET}): " answer
-        if [ "$answer" == "y" ]; then
-        sudo dds-tunnel
-        else
-        echo "OK"
-        echo -e "${CYAN}Exiting...${RESET}"
+echo "+--------------------------------------------------+"
+echo "|                        B Y                       |"
+echo "|                 D E V S P A C E X                |"
+echo "|           ----------------------------           |"
+echo "|                 <Ping is closed>                 |"
+echo "+--------------------------------------------------+"
+        read -p "Back to Main menu? (enter): "
+        echo -e "Exiting..."
         exit 0
         fi
         ;;

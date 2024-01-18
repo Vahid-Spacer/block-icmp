@@ -16,39 +16,36 @@ if [[ $distro != "ubuntu" ]]; then
 fi
 
 echo "+--------------------------------------------------+"
-echo "|                        B Y                       |"
-echo "|                 D E V S P A C E X                |"
-echo "|           ----------------------------           |"
-echo "|                     Main Menu                    |"
+echo "|                         B Y                      |"
+echo "|                  D E V S P A C E X               |"
+echo "|            ---------------------------           |"
+echo "|                      Main Menu                   |"
 echo "+--------------------------------------------------+"
 echo " Select one of the following options"
-echo "  1.  Block ICMP"
-echo "  2.  Remove Block ICMP"
-echo "  3.  Exit"
+echo "  1.  Server tunnel (ipv4)"
+echo "  2.  Remove the tunnel"
+echo "  3.  View the Forwarded IP (ipv4)"
+echo "  4.  Server tunnel (ipv6)"
+echo "  5.  View the Forwarded IP (ipv6)"
+echo "  6.  Exit"
 read -r -p "Please select one [1-2-3]: " -e OPTION
 case $OPTION in
-
-    1)
-        
-        sudo iptables -A INPUT -p icmp -j DROP
-
-        # Save iptables rules
-echo "Saving iptables rules..."
-        sudo mkdir -p /etc/iptables/
-        sudo iptables-save | sudo tee /etc/iptables/rules.v4
+1)
+sudo iptables -t nat -F
+    echo "Your forward port was removed"
+  ;;
+2)
+sudo iptables -A INPUT -p icmp -j DROP
 echo "+--------------------------------------------------+"
 echo "|                        B Y                       |"
 echo "|                 D E V S P A C E X                |"
 echo "|           ----------------------------           |"
 echo "|                 <Ping is closed>                 |"
 echo "+--------------------------------------------------+"
-        read -p "Back to Main menu? (enter): "
-        echo -e "Exiting..."
-        exit 0
-        fi
-        ;;
-    2)
-        exit
-        echo "Your exit now ."
-        ;;
+exit
+  ;;
+    3)
+    exit
+    echo "Your exit now ."
+      ;;
 esac

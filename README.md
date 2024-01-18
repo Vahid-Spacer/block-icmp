@@ -16,6 +16,6 @@
 
 
 ```sh
-git clone https://github.com/Vahid-Spacer/block-icmp/icmp.sh
+bash <(curl -Ls https://raw.githubusercontent.com/Vahid-Spacer/block-icmp/master/icmp.sh)
 ```
 <br>
